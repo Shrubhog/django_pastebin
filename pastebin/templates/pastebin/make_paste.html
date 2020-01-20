@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Editing a Paste</title>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <h1>Make a paste!</h1>
+
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+        <form action="{% url 'pastebin:confirm' %}" method="post">
+        {% csrf_token %}
+        <label for="title">Paste title:</label>
+        <input name="title" type="text" placeholder="Paste title" id="title" value="Paste"><br>
+        <label for="user">Username:</label>
+        <input name="user" type="text" placeholder="Guest" id="user" value="Guest"><br>
+        <textarea name="paste" style="width:100vh; height:600px;" placeholder="Paste text" id="paste"></textarea><br>
+        <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pastebin Index</title>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <h1>Recently created pastes:</h1>
+        <a href="{% url 'pastebin:create' %}">Make a new paste?</a>
+        {% if latest_paste_list %}
+            <ul>
+            {% for paste in latest_paste_list %}
+                <li><a href="{% url 'pastebin:paste' paste.paste_id %}">{{ paste.title }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No pastes are available.</p>
+        {% endif %}
+        
+    </body>
+</html>
